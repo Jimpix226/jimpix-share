@@ -936,8 +936,8 @@ body {
       const av = u.avatar
         ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=64`
         : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
-      sessionStorage.setItem(SESSION_KEY, '1');
-      sessionStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
+      localStorage.setItem(SESSION_KEY, '1');
+      localStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
       history.replaceState(null, '', location.pathname);
       showApp();
     } catch(e) { showScreen('login'); }
@@ -949,7 +949,7 @@ body {
     const p = document.getElementById('password').value;
     const err = document.getElementById('login-error');
     if (u === CORRECT_USER && p === CORRECT_PASS) {
-      sessionStorage.setItem(SESSION_KEY, '1');
+      localStorage.setItem(SESSION_KEY, '1');
       err.textContent = '';
       showApp();
     } else {
@@ -964,8 +964,8 @@ body {
   });
 
   function doLogout() {
-    sessionStorage.removeItem(SESSION_KEY);
-    sessionStorage.removeItem(DC_USER_KEY);
+    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(DC_USER_KEY);
     history.replaceState(null, '', location.pathname);
     location.reload();
   }
@@ -1235,10 +1235,10 @@ body {
     document.getElementById('particles').style.display = (name === 'login') ? 'block' : 'none';
   }
 
-  function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
+  function isLoggedIn() { return localStorage.getItem(SESSION_KEY) === '1'; }
 
   function showApp() {
-    const dcUser = sessionStorage.getItem(DC_USER_KEY);
+    const dcUser = localStorage.getItem(DC_USER_KEY);
     if (dcUser) {
       try {
         const u = JSON.parse(dcUser);
