@@ -1021,7 +1021,9 @@ body {
     const params = new URLSearchParams(fragment);
     const token = params.get('access_token');
     const st = params.get('state');
-    if (!token || st !== sessionStorage.getItem('dc_state')) { showScreen('login'); return; }
+    const savedState = sessionStorage.getItem('dc_state');
+    // If state doesn't match (e.g. page refreshed), just show login cleanly
+    if (!token || (savedState && st !== savedState)) { showScreen('login'); return; }
     sessionStorage.removeItem('dc_state');
     try {
       const res = await fetch('https://discord.com/api/users/@me', { headers: { Authorization: 'Bearer ' + token } });
@@ -1031,7 +1033,6 @@ body {
         : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
       sessionStorage.setItem(SESSION_KEY, '1');
       sessionStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
-      history.replaceState(null, '', location.pathname);
       showApp();
     } catch(e) { showScreen('login'); }
   }
@@ -1385,7 +1386,11 @@ body {
   // ── Router ──
   function route() {
     const hash = location.hash;
-    if (hash.startsWith('#access_token=') || hash.includes('access_token=')) {
+    // OAuth callback: must have access_token AND token_type in the fragment
+    const isOAuth = hash.includes('access_token=') && hash.includes('token_type=');
+    if (isOAuth) {
+      // Clean the URL immediately so refresh doesn't re-trigger OAuth
+      history.replaceState(null, '', location.pathname);
       handleDiscordCallback(hash.slice(1)); return;
     }
     const vm = hash.match(/^#view=(.+)$/);
