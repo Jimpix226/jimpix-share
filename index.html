@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jimpix · Share</title>
 
-<!-- OG / Discord embed tags — filled dynamically on view screen -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jimpix · Shared Image">
 <meta property="og:description" content="View shared image on Jimpix">
@@ -56,13 +55,9 @@
     z-index: 0;
   }
 
-  /* ── LOGIN ── */
   #login-screen {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 420px;
-    padding: 20px;
+    position: relative; z-index: 10;
+    width: 100%; max-width: 420px; padding: 20px;
   }
 
   .login-card {
@@ -74,13 +69,7 @@
     animation: slideUp .5s cubic-bezier(.16,1,.3,1) both;
   }
 
-  .login-logo {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 6px;
-  }
-
+  .login-logo { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; }
   .login-logo span { color: var(--accent); }
 
   .login-sub {
@@ -90,248 +79,170 @@
     margin-bottom: 36px;
   }
 
-  /* Discord login button */
   .btn-discord {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    padding: 15px 20px;
-    background: var(--dc);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius);
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
-    letter-spacing: .02em;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; padding: 15px 20px;
+    background: var(--dc); color: #fff;
+    border: none; border-radius: var(--radius);
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+    cursor: pointer; letter-spacing: .02em;
     transition: background .2s, transform .15s;
     text-decoration: none;
   }
-
   .btn-discord:hover { background: var(--dc-hover); transform: translateY(-1px); }
   .btn-discord:active { transform: translateY(0); }
-
   .btn-discord svg { flex-shrink: 0; }
 
   .login-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
     margin: 24px 0;
     color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    font-size: .72rem;
+    font-family: 'Space Mono', monospace; font-size: .72rem;
   }
-
-  .login-divider::before,
-  .login-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+  .login-divider::before, .login-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
   }
 
   .field { margin-bottom: 18px; }
 
   label {
-    display: block;
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 8px;
+    display: block; font-size: .75rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
   }
 
   input[type=text], input[type=password] {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-family: 'Space Mono', monospace;
-    font-size: .9rem;
-    padding: 13px 16px;
-    outline: none;
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text); font-family: 'Space Mono', monospace;
+    font-size: .9rem; padding: 13px 16px; outline: none;
     transition: border-color .2s;
   }
-
   input:focus { border-color: var(--accent); }
 
   .btn {
-    display: block;
-    width: 100%;
-    padding: 14px;
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    border-radius: var(--radius);
-    font-family: 'Syne', sans-serif;
-    font-size: .95rem;
-    font-weight: 800;
-    cursor: pointer;
-    letter-spacing: .02em;
-    transition: transform .15s, opacity .15s;
-    margin-top: 8px;
+    display: block; width: 100%; padding: 14px;
+    background: var(--accent); color: #0a0a0f;
+    border: none; border-radius: var(--radius);
+    font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 800;
+    cursor: pointer; letter-spacing: .02em;
+    transition: transform .15s, opacity .15s; margin-top: 8px;
   }
-
   .btn:hover { opacity: .85; transform: translateY(-1px); }
   .btn:active { transform: translateY(0); }
-
-  .btn.secondary {
-    background: var(--border);
-    color: var(--text);
-    margin-top: 0;
-  }
-
+  .btn.secondary { background: var(--border); color: var(--text); margin-top: 0; }
   .btn.danger { background: var(--danger); color: #fff; }
 
   .error-msg {
-    color: var(--danger);
-    font-size: .8rem;
+    color: var(--danger); font-size: .8rem;
     font-family: 'Space Mono', monospace;
-    margin-top: 12px;
-    text-align: center;
-    min-height: 20px;
-    transition: opacity .2s;
+    margin-top: 12px; text-align: center; min-height: 20px;
   }
 
-  /* ── APP ── */
+  /* APP */
   #app-screen {
-    display: none;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 720px;
-    padding: 20px;
+    display: none; position: relative; z-index: 10;
+    width: 100%; max-width: 720px; padding: 20px;
     animation: slideUp .4s cubic-bezier(.16,1,.3,1) both;
   }
 
   .app-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 28px;
   }
 
-  .app-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
-
+  .app-logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
   .app-logo span { color: var(--accent); }
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .user-info { display: flex; align-items: center; gap: 10px; }
 
   .user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid var(--dc);
-    object-fit: cover;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--dc); object-fit: cover;
   }
 
-  .user-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: .75rem;
-    color: var(--muted);
-  }
+  .user-tag { font-family: 'Space Mono', monospace; font-size: .75rem; color: var(--muted); }
 
   .logout-btn {
-    font-family: 'Space Mono', monospace;
-    font-size: .75rem;
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    border-radius: 8px;
-    padding: 7px 14px;
-    cursor: pointer;
-    transition: border-color .2s, color .2s;
+    font-family: 'Space Mono', monospace; font-size: .75rem;
+    background: none; border: 1px solid var(--border);
+    color: var(--muted); border-radius: 8px; padding: 7px 14px;
+    cursor: pointer; transition: border-color .2s, color .2s;
   }
-
   .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Paste zone */
   #paste-zone {
-    border: 2px dashed var(--border);
-    border-radius: 20px;
-    padding: 60px 40px;
-    text-align: center;
-    cursor: pointer;
+    border: 2px dashed var(--border); border-radius: 20px;
+    padding: 60px 40px; text-align: center; cursor: pointer;
     transition: border-color .25s, background .25s;
-    background: var(--panel);
-    position: relative;
-    overflow: hidden;
+    background: var(--panel); position: relative; overflow: hidden;
   }
+  #paste-zone.has-image { border-color: var(--accent); padding: 16px; }
+  #paste-zone.drag-over { border-color: var(--accent2); background: rgba(71,180,255,0.05); }
 
-  #paste-zone.has-image {
-    border-color: var(--accent);
-    padding: 16px;
-  }
-
-  #paste-zone.drag-over {
-    border-color: var(--accent2);
-    background: rgba(71,180,255,0.05);
-  }
-
-  .paste-icon {
-    font-size: 3rem;
-    margin-bottom: 16px;
-    opacity: .3;
-    transition: opacity .2s;
-  }
-
+  .paste-icon { font-size: 3rem; margin-bottom: 16px; opacity: .3; }
   #paste-zone.has-image .paste-icon { display: none; }
 
-  .paste-hint {
-    color: var(--muted);
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
+  .paste-hint { color: var(--muted); font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
   .paste-hint kbd {
-    background: var(--border);
-    color: var(--text);
-    border-radius: 6px;
-    padding: 2px 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: .8rem;
+    background: var(--border); color: var(--text);
+    border-radius: 6px; padding: 2px 8px;
+    font-family: 'Space Mono', monospace; font-size: .8rem;
   }
-
-  .paste-sub {
-    color: var(--muted);
-    font-size: .8rem;
-    font-family: 'Space Mono', monospace;
-  }
+  .paste-sub { color: var(--muted); font-size: .8rem; font-family: 'Space Mono', monospace; }
 
   #paste-zone.has-image .paste-hint,
   #paste-zone.has-image .paste-sub { display: none; }
 
   #preview-img {
-    display: none;
-    max-width: 100%;
-    max-height: 420px;
-    border-radius: 12px;
-    object-fit: contain;
+    display: none; max-width: 100%; max-height: 420px;
+    border-radius: 12px; object-fit: contain;
   }
-
   #paste-zone.has-image #preview-img { display: block; margin: 0 auto; }
 
-  /* Actions */
   .actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 16px;
+  }
+
+  /* Upload progress */
+  #upload-progress {
+    display: none;
     margin-top: 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    animation: slideUp .3s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .progress-label {
+    font-size: .75rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .progress-bar-wrap {
+    background: var(--bg); border-radius: 99px;
+    height: 6px; overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 99px;
+    transition: width .3s ease;
+  }
+
+  .progress-bar.indeterminate {
+    width: 40%;
+    animation: indeterminate 1.2s ease-in-out infinite;
+  }
+
+  @keyframes indeterminate {
+    0% { transform: translateX(-150%); }
+    100% { transform: translateX(350%); }
   }
 
   /* Share panel */
@@ -346,189 +257,113 @@
   }
 
   .share-label {
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
+    font-size: .75rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
   }
 
-  .share-link-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
+  .share-link-row { display: flex; gap: 10px; align-items: center; }
 
   .share-link-box {
-    flex: 1;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 11px 14px;
-    font-family: 'Space Mono', monospace;
-    font-size: .75rem;
-    color: var(--accent2);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    user-select: all;
-    cursor: text;
+    flex: 1; background: var(--bg);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 11px 14px; font-family: 'Space Mono', monospace;
+    font-size: .75rem; color: var(--accent2);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    user-select: all; cursor: text;
   }
 
   .copy-btn {
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    border-radius: var(--radius);
-    padding: 11px 18px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: .8rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: opacity .15s;
+    background: var(--accent); color: #0a0a0f;
+    border: none; border-radius: var(--radius);
+    padding: 11px 18px; font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: .8rem; cursor: pointer;
+    white-space: nowrap; transition: opacity .15s;
   }
-
   .copy-btn:hover { opacity: .8; }
   .copy-btn.copied { background: var(--success); color: #fff; }
 
   .share-note {
-    font-size: .75rem;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    margin-top: 10px;
+    font-size: .75rem; color: var(--muted);
+    font-family: 'Space Mono', monospace; margin-top: 10px;
   }
 
   .discord-embed-note {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 14px;
-    padding: 12px 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 14px; padding: 12px 14px;
     background: rgba(88,101,242,0.12);
     border: 1px solid rgba(88,101,242,0.3);
-    border-radius: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: .72rem;
-    color: #a8adff;
-    line-height: 1.5;
+    border-radius: 10px; font-family: 'Space Mono', monospace;
+    font-size: .72rem; color: #a8adff; line-height: 1.5;
   }
 
-  /* ── VIEW SCREEN ── */
+  /* VIEW SCREEN */
   #view-screen {
-    display: none;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 860px;
-    padding: 20px;
+    display: none; position: relative; z-index: 10;
+    width: 100%; max-width: 860px; padding: 20px;
     text-align: center;
     animation: slideUp .5s cubic-bezier(.16,1,.3,1) both;
   }
 
-  .view-header {
-    margin-bottom: 24px;
-  }
-
+  .view-header { margin-bottom: 24px; }
   .view-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; }
   .view-logo span { color: var(--accent); }
 
   #view-img {
-    max-width: 100%;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    display: block;
-    margin: 0 auto 24px;
+    max-width: 100%; max-height: 70vh;
+    border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    display: block; margin: 0 auto 24px;
   }
 
   .view-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
   .dl-btn {
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    border-radius: var(--radius);
-    padding: 12px 24px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: .9rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: opacity .15s;
+    background: var(--accent); color: #0a0a0f;
+    border: none; border-radius: var(--radius);
+    padding: 12px 24px; font-family: 'Syne', sans-serif;
+    font-weight: 800; cursor: pointer; font-size: .9rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px; transition: opacity .15s;
   }
-
   .dl-btn:hover { opacity: .8; }
-
-  .dl-btn.secondary {
-    background: var(--border);
-    color: var(--text);
-  }
+  .dl-btn.secondary { background: var(--border); color: var(--text); }
 
   .no-image-msg {
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    font-size: .9rem;
-    margin-top: 40px;
+    color: var(--muted); font-family: 'Space Mono', monospace;
+    font-size: .9rem; margin-top: 40px;
   }
 
-  /* Discord embed hint box */
   .embed-hint {
-    margin: 16px auto 0;
-    max-width: 500px;
+    margin: 16px auto 0; max-width: 500px;
     padding: 14px 18px;
     background: rgba(88,101,242,0.1);
     border: 1px solid rgba(88,101,242,0.25);
-    border-radius: 12px;
-    font-family: 'Space Mono', monospace;
-    font-size: .72rem;
-    color: #a8adff;
-    line-height: 1.6;
-    text-align: left;
+    border-radius: 12px; font-family: 'Space Mono', monospace;
+    font-size: .72rem; color: #a8adff; line-height: 1.6; text-align: left;
   }
-
   .embed-hint strong { color: #c5c8ff; }
 
-  /* OAuth callback spinner */
+  /* OAuth screen */
   #oauth-screen {
-    display: none;
-    position: relative;
-    z-index: 10;
-    text-align: center;
+    display: none; position: relative; z-index: 10; text-align: center;
   }
 
   .spinner {
-    width: 48px;
-    height: 48px;
-    border: 3px solid var(--border);
-    border-top-color: var(--dc);
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
+    width: 48px; height: 48px;
+    border: 3px solid var(--border); border-top-color: var(--dc);
+    border-radius: 50%; animation: spin .8s linear infinite;
     margin: 0 auto 20px;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .oauth-msg {
-    font-family: 'Space Mono', monospace;
-    font-size: .85rem;
-    color: var(--muted);
-  }
+  .oauth-msg { font-family: 'Space Mono', monospace; font-size: .85rem; color: var(--muted); }
 
-  /* Animations */
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .shake {
-    animation: shake .4s cubic-bezier(.36,.07,.19,.97) both;
-  }
-
+  .shake { animation: shake .4s cubic-bezier(.36,.07,.19,.97) both; }
   @keyframes shake {
     10%, 90% { transform: translateX(-2px); }
     20%, 80% { transform: translateX(4px); }
@@ -539,19 +374,18 @@
 </head>
 <body>
 
-<!-- ── OAUTH LOADING ── -->
+<!-- OAUTH -->
 <div id="oauth-screen">
   <div class="spinner"></div>
   <div class="oauth-msg">Signing in with Discord...</div>
 </div>
 
-<!-- ── LOGIN ── -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">Jimp<span>ix</span></div>
     <div class="login-sub">// private image share</div>
 
-    <!-- Discord OAuth button -->
     <a id="discord-login-btn" class="btn-discord" href="#" onclick="startDiscordLogin(); return false;">
       <svg width="22" height="16" viewBox="0 0 127 96" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z" fill="currentColor"/>
@@ -574,7 +408,7 @@
   </div>
 </div>
 
-<!-- ── APP ── -->
+<!-- APP -->
 <div id="app-screen">
   <div class="app-header">
     <div class="app-logo">Jimp<span>ix</span></div>
@@ -596,7 +430,18 @@
 
   <div class="actions">
     <button class="btn secondary" onclick="clearImage()">✕ Clear</button>
-    <button class="btn" onclick="generateLink()">🔗 Generate Share Link</button>
+    <button class="btn" id="upload-btn" onclick="uploadAndShare()">🔗 Generate Share Link</button>
+  </div>
+
+  <!-- Upload progress -->
+  <div id="upload-progress">
+    <div class="progress-label">
+      <div class="spinner" style="width:16px;height:16px;border-width:2px;margin:0"></div>
+      <span id="progress-text">Uploading to imgbb...</span>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar indeterminate" id="progress-bar"></div>
+    </div>
   </div>
 
   <div id="share-panel">
@@ -605,37 +450,37 @@
       <div class="share-link-box" id="share-link-text"></div>
       <button class="copy-btn" id="copy-btn" onclick="copyLink()">Copy</button>
     </div>
-    <div class="share-note">⚠ Anyone with this link can view the image — no login required for viewers.</div>
+    <div class="share-note">✅ Kép feltöltve imgbb-re — a link bárki számára működik!</div>
     <div class="discord-embed-note">
       <svg width="16" height="16" viewBox="0 0 127 96" fill="currentColor" style="flex-shrink:0;margin-top:2px"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg>
-      <span>Discord embed: paste the link into Discord — a <strong>preview image</strong> will appear automatically if the link is opened in a browser first (Discord caches the OG image). For guaranteed embed, use the <strong>"Copy Direct Image URL"</strong> button on the view page.</span>
+      <span>Discord embed: illeszd be a linket Discordba — a kép automatikusan megjelenik preview-ként!</span>
     </div>
   </div>
 </div>
 
-<!-- ── VIEW ── -->
+<!-- VIEW -->
 <div id="view-screen">
   <div class="view-header">
     <div class="view-logo">Jimp<span>ix</span></div>
   </div>
   <img id="view-img" src="" alt="Shared image" />
   <div class="view-actions">
-    <a id="dl-link" class="dl-btn" download="jimpix-image.png">⬇ Download</a>
+    <a id="dl-link" class="dl-btn" target="_blank">⬇ Download</a>
     <button id="copy-img-btn" class="dl-btn secondary" onclick="copyDirectImage()">📋 Copy Image</button>
   </div>
   <div class="embed-hint">
-    <strong>Discord-ba küldés:</strong> A legjobb ha a képet közvetlenül másolod és Discordba illeszted (<strong>📋 Copy Image</strong> gomb), vagy töltsd le és húzd be a chatbe. A link preview Discord-on csak szerveres hostolással működik teljesen.
+    <strong>Discord-ba küldés:</strong> Másold a képet (<strong>📋 Copy Image</strong>) és illeszd be Discordba, vagy töltsd le és húzd be. A link preview automatikusan működik!
   </div>
 </div>
 
 <script>
   // ══════════════════════════════════════════════
-  //  CONFIG — set your Discord App Client ID here
+  //  CONFIG
   // ══════════════════════════════════════════════
-  const DISCORD_CLIENT_ID = '1509930043332231410'; // <-- replace this!
-  const DISCORD_REDIRECT_URI = location.origin + location.pathname; // same page
+  const DISCORD_CLIENT_ID   = '1509930043332231410';
+  const DISCORD_REDIRECT_URI = location.origin + location.pathname;
+  const IMGBB_API_KEY       = 'cf23a7563367b04561c9f19d30148c63';
 
-  // Fallback password auth
   const CORRECT_USER = 'Jimpix';
   const CORRECT_PASS = 'hessdalen';
   const SESSION_KEY  = 'jimpix_auth';
@@ -643,16 +488,12 @@
 
   // ── Discord OAuth2 ──
   function startDiscordLogin() {
-    if (DISCORD_CLIENT_ID === 'YOUR_DISCORD_CLIENT_ID') {
-      alert('Discord login is not configured yet.\nSet DISCORD_CLIENT_ID in the script.\n\nUse password login for now.');
-      return;
-    }
     const state = Math.random().toString(36).slice(2);
     sessionStorage.setItem('dc_state', state);
     const params = new URLSearchParams({
       client_id: DISCORD_CLIENT_ID,
       redirect_uri: DISCORD_REDIRECT_URI,
-      response_type: 'token',        // implicit flow — no backend needed
+      response_type: 'token',
       scope: 'identify',
       state
     });
@@ -667,10 +508,8 @@
     const savedState = sessionStorage.getItem('dc_state');
 
     if (!accessToken || returnedState !== savedState) {
-      showScreen('login');
-      return;
+      showScreen('login'); return;
     }
-
     sessionStorage.removeItem('dc_state');
 
     try {
@@ -688,8 +527,6 @@
         discriminator: user.discriminator,
         avatar: avatarUrl
       }));
-
-      // Clean the hash so token doesn't stay in URL
       history.replaceState(null, '', location.pathname);
       showApp();
     } catch(e) {
@@ -733,6 +570,7 @@
     document.getElementById('preview-img').src = dataURL;
     document.getElementById('paste-zone').classList.add('has-image');
     document.getElementById('share-panel').style.display = 'none';
+    document.getElementById('upload-progress').style.display = 'none';
   }
 
   function clearImage() {
@@ -740,10 +578,11 @@
     document.getElementById('preview-img').src = '';
     document.getElementById('paste-zone').classList.remove('has-image');
     document.getElementById('share-panel').style.display = 'none';
+    document.getElementById('upload-progress').style.display = 'none';
     document.getElementById('file-input').value = '';
   }
 
-  // Paste listener
+  // Paste
   document.addEventListener('paste', e => {
     if (!isLoggedIn()) return;
     const items = e.clipboardData?.items;
@@ -783,21 +622,57 @@
     }
   });
 
-  // ── Share link ──
-  function generateLink() {
+  // ── imgbb upload + share ──
+  async function uploadAndShare() {
     if (!currentDataURL) { alert('Paste or upload an image first.'); return; }
-    const key = 'jimpix_img_' + Math.random().toString(36).slice(2, 10);
+
+    // Show progress
+    const progressEl = document.getElementById('upload-progress');
+    const progressText = document.getElementById('progress-text');
+    const uploadBtn = document.getElementById('upload-btn');
+    progressEl.style.display = 'block';
+    document.getElementById('share-panel').style.display = 'none';
+    progressText.textContent = 'Uploading to imgbb...';
+    uploadBtn.disabled = true;
+    uploadBtn.style.opacity = '0.5';
+
     try {
-      localStorage.setItem(key, currentDataURL);
+      // Strip the data:image/...;base64, prefix
+      const base64 = currentDataURL.split(',')[1];
+
+      const formData = new FormData();
+      formData.append('key', IMGBB_API_KEY);
+      formData.append('image', base64);
+
+      const res = await fetch('https://api.imgbb.com/1/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.error?.message || 'Upload failed');
+      }
+
+      const imageUrl = data.data.url;
+      const pageUrl  = data.data.url_viewer;
+
+      progressEl.style.display = 'none';
+
+      // Show share panel with the imgbb viewer URL
+      document.getElementById('share-link-text').textContent = pageUrl;
+      document.getElementById('share-panel').style.display = 'block';
+      document.getElementById('copy-btn').textContent = 'Copy';
+      document.getElementById('copy-btn').classList.remove('copied');
+
     } catch(e) {
-      alert('Image too large to share via link. Try a smaller image.');
-      return;
+      progressEl.style.display = 'none';
+      alert('Upload failed: ' + e.message);
+    } finally {
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
     }
-    const url = location.href.split('#')[0] + '#view=' + key;
-    document.getElementById('share-link-text').textContent = url;
-    document.getElementById('share-panel').style.display = 'block';
-    document.getElementById('copy-btn').textContent = 'Copy';
-    document.getElementById('copy-btn').classList.remove('copied');
   }
 
   function copyLink() {
@@ -810,23 +685,19 @@
     });
   }
 
-  // ── Copy image to clipboard (view screen) ──
+  // ── Copy image (view screen) ──
   async function copyDirectImage() {
     const img = document.getElementById('view-img');
     if (!img.src) return;
     try {
-      // Convert dataURL to blob and copy as image/png
       const res = await fetch(img.src);
       const blob = await res.blob();
       const pngBlob = blob.type === 'image/png' ? blob : await convertToPng(img);
-      await navigator.clipboard.write([
-        new ClipboardItem({ 'image/png': pngBlob })
-      ]);
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': pngBlob })]);
       const btn = document.getElementById('copy-img-btn');
       btn.textContent = '✓ Copied!';
       setTimeout(() => { btn.textContent = '📋 Copy Image'; }, 2000);
     } catch(e) {
-      // Fallback: open image in new tab
       const w = window.open();
       w.document.write(`<img src="${img.src}" style="max-width:100%">`);
     }
@@ -846,9 +717,7 @@
   const screens = ['login-screen','app-screen','view-screen','oauth-screen'];
 
   function showScreen(name) {
-    screens.forEach(id => {
-      document.getElementById(id).style.display = 'none';
-    });
+    screens.forEach(id => { document.getElementById(id).style.display = 'none'; });
     const map = { login: 'login-screen', app: 'app-screen', view: 'view-screen', oauth: 'oauth-screen' };
     document.getElementById(map[name] || name).style.display = 'block';
   }
@@ -856,14 +725,12 @@
   function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
 
   function showApp() {
-    // Show Discord user info if available
     const dcUser = sessionStorage.getItem(DC_USER_KEY);
     if (dcUser) {
       try {
         const u = JSON.parse(dcUser);
         const av = document.getElementById('user-avatar');
-        av.src = u.avatar;
-        av.style.display = 'block';
+        av.src = u.avatar; av.style.display = 'block';
         document.getElementById('user-tag').textContent = u.username;
       } catch(e) {}
     }
@@ -871,17 +738,13 @@
   }
 
   function showView(key) {
+    // key itt most egy imgbb URL lehet, vagy régi localStorage kulcs
     const data = localStorage.getItem(key);
     showScreen('view');
     if (data) {
       const img = document.getElementById('view-img');
-      img.src = data;
-      img.style.display = 'block';
+      img.src = data; img.style.display = 'block';
       document.getElementById('dl-link').href = data;
-
-      // Set OG meta tags dynamically for Discord embed
-      document.getElementById('og-image').setAttribute('content', data);
-      document.getElementById('tw-image').setAttribute('content', data);
     } else {
       document.getElementById('view-img').style.display = 'none';
       document.getElementById('copy-img-btn').style.display = 'none';
@@ -896,7 +759,6 @@
   function route() {
     const hash = location.hash;
 
-    // Discord OAuth2 implicit flow callback — token in fragment
     if (hash.startsWith('#access_token=') || hash.includes('access_token=')) {
       handleDiscordCallback(hash.slice(1));
       return;
@@ -908,11 +770,7 @@
       return;
     }
 
-    if (isLoggedIn()) {
-      showApp();
-    } else {
-      showScreen('login');
-    }
+    if (isLoggedIn()) { showApp(); } else { showScreen('login'); }
   }
 
   window.addEventListener('hashchange', route);
