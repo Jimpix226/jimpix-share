@@ -61,12 +61,12 @@ body {
 #video-bg video {
   width: 100%; height: 100%;
   object-fit: cover;
-  opacity: 0.35;
+  opacity: 0.55;
 }
 #video-bg::after {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(7,7,15,0.55);
+  background: rgba(7,7,15,0.35);
 }
 
 /* ──────── AMBIENT BG ──────── */
@@ -121,8 +121,8 @@ body {
 .screen.active { display: flex; flex-direction: column; }
 
 @keyframes pop-in {
-  from { opacity: 0; transform: translateY(20px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 /* ──────── LOGIN SCREEN ──────── */
@@ -133,15 +133,25 @@ body {
 
 .login-wrap {
   width: 100%;
-  background: linear-gradient(160deg, var(--card) 0%, var(--card2) 100%);
-  border: 1px solid var(--border2);
+  background: rgba(12, 12, 24, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 28px;
   padding: 44px 36px 36px;
   position: relative; overflow: hidden;
   box-shadow:
-    0 0 0 1px rgba(124,109,250,0.08),
-    0 32px 80px rgba(0,0,0,0.7),
-    0 0 80px rgba(124,109,250,0.06);
+    0 0 0 1px rgba(124,109,250,0.12),
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 100px rgba(124,109,250,0.08);
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.login-wrap:hover {
+  border-color: rgba(255,255,255,0.16);
+  box-shadow:
+    0 0 0 1px rgba(124,109,250,0.2),
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 120px rgba(124,109,250,0.12);
 }
 
 /* Glowing top gradient line */
@@ -189,21 +199,26 @@ body {
 /* Discord btn */
 .btn-dc {
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  width: 100%; padding: 12px 20px;
-  background: rgba(88,101,242,0.1);
-  border: 1px solid rgba(88,101,242,0.28);
+  width: 100%; padding: 13px 20px;
+  background: rgba(88,101,242,0.15);
+  border: 1px solid rgba(88,101,242,0.35);
   border-radius: var(--r);
   color: #c5c9ff; font-family: var(--font);
   font-size: 0.9rem; font-weight: 600;
   cursor: pointer; text-decoration: none;
+  backdrop-filter: blur(8px);
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   position: relative; overflow: hidden;
 }
+.btn-dc::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+}
 .btn-dc:hover {
-  background: rgba(88,101,242,0.18);
-  border-color: rgba(88,101,242,0.55);
+  background: rgba(88,101,242,0.28);
+  border-color: rgba(88,101,242,0.7);
   color: #fff; transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(88,101,242,0.18);
+  box-shadow: 0 8px 28px rgba(88,101,242,0.25);
 }
 .btn-dc:active { transform: translateY(0); }
 
@@ -227,39 +242,49 @@ body {
   color: var(--text2); margin-bottom: 7px;
 }
 .field input {
-  width: 100%; background: rgba(255,255,255,0.02);
-  border: 1px solid var(--border); border-radius: var(--r);
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r);
   color: var(--text); font-family: var(--mono);
-  font-size: 0.85rem; padding: 11px 14px; outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-size: 0.85rem; padding: 12px 16px; outline: none;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
 .field input:focus {
-  border-color: rgba(124,109,250,0.5);
-  box-shadow: 0 0 0 3px rgba(124,109,250,0.08);
-  background: rgba(124,109,250,0.03);
+  border-color: rgba(124,109,250,0.6);
+  box-shadow: 0 0 0 3px rgba(124,109,250,0.12), 0 0 20px rgba(124,109,250,0.08);
+  background: rgba(124,109,250,0.06);
 }
 .field input::placeholder { color: var(--text3); }
 
 /* Primary btn */
 .btn-primary {
-  display: block; width: 100%; padding: 12px;
-  background: var(--accent); color: #fff;
+  display: block; width: 100%; padding: 13px;
+  background: linear-gradient(135deg, #7c6dfa, #a78bfa);
+  color: #fff;
   border: none; border-radius: var(--r);
   font-family: var(--font); font-size: 0.9rem; font-weight: 600;
-  cursor: pointer; letter-spacing: 0.01em;
+  cursor: pointer; letter-spacing: 0.02em;
   transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
   margin-top: 6px; position: relative; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(124,109,250,0.3);
 }
 .btn-primary::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 55%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 55%);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 100%);
+  opacity: 0; transition: opacity 0.2s;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(124,109,250,0.35);
+  box-shadow: 0 8px 32px rgba(124,109,250,0.5), 0 0 60px rgba(124,109,250,0.2);
 }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 4px 20px rgba(124,109,250,0.3); }
 .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 
 .err { color: var(--red); font-size: 0.72rem; font-family: var(--mono); margin-top: 10px; text-align: center; min-height: 16px; }
@@ -289,7 +314,7 @@ body {
 .btn-out:hover { border-color: var(--red); color: var(--red); }
 
 /* Tabs */
-.tabs { display: flex; gap: 4px; margin-bottom: 18px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
+.tabs { display: flex; gap: 4px; margin-bottom: 18px; background: rgba(12,12,24,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 4px; }
 .tab {
   flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
   padding: 8px 16px;
@@ -303,15 +328,19 @@ body {
 
 /* Drop zone */
 #paste-zone {
-  border: 1.5px dashed var(--border2);
+  border: 1.5px dashed rgba(124,109,250,0.3);
   border-radius: var(--r2); padding: 64px 40px;
   text-align: center; cursor: pointer;
-  background: var(--card); position: relative; overflow: hidden;
-  transition: border-color 0.3s, background 0.3s;
+  background: rgba(12,12,24,0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 #paste-zone:hover {
-  border-color: rgba(124,109,250,0.4);
-  background: rgba(124,109,250,0.02);
+  border-color: rgba(124,109,250,0.6);
+  background: rgba(124,109,250,0.06);
+  box-shadow: 0 0 30px rgba(124,109,250,0.1);
 }
 #paste-zone:hover .dz-icon { transform: scale(1.08) translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,109,250,0.2); }
 #paste-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); border-style: solid; }
@@ -359,25 +388,27 @@ body {
 /* Actions */
 .actions { display: grid; grid-template-columns: 1fr 2.5fr; gap: 10px; margin-top: 12px; }
 .btn-clear {
-  padding: 11px; background: none;
-  border: 1px solid var(--border2); border-radius: var(--r);
+  padding: 11px; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r);
   color: var(--text2); font-family: var(--font); font-size: 0.85rem; font-weight: 500;
-  cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s;
+  cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+  backdrop-filter: blur(8px);
 }
-.btn-clear:hover { border-color: rgba(255,255,255,0.18); color: var(--text); background: var(--card2); }
+.btn-clear:hover { border-color: rgba(255,255,255,0.22); color: var(--text); background: rgba(255,255,255,0.08); transform: translateY(-1px); }
 .btn-share {
-  padding: 11px; background: var(--accent);
+  padding: 11px; background: linear-gradient(135deg, #7c6dfa, #a78bfa);
   border: none; border-radius: var(--r);
   color: #fff; font-family: var(--font); font-size: 0.9rem; font-weight: 600;
   cursor: pointer; letter-spacing: 0.01em;
   transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
   position: relative; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(124,109,250,0.3);
 }
 .btn-share::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 55%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 55%);
 }
-.btn-share:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,109,250,0.35); }
+.btn-share:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,109,250,0.5); }
 .btn-share:active { transform: translateY(0); }
 .btn-share:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 
@@ -519,6 +550,151 @@ body {
   100% { opacity: 0; transform: translateY(-100vh) scale(0); }
 }
 
+/* ──────── WINDOW-LEVEL DRAG GLOW ──────── */
+@keyframes dz-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--accent), 0 0 28px rgba(124,109,250,0.45), 0 0 60px rgba(124,109,250,0.2); }
+  50%       { box-shadow: 0 0 0 2px var(--accent2), 0 0 48px rgba(167,139,250,0.65), 0 0 90px rgba(167,139,250,0.3); }
+}
+#paste-zone.window-drag {
+  border-color: var(--accent2) !important;
+  border-style: dashed !important;
+  background: rgba(124,109,250,0.09) !important;
+  animation: dz-glow-pulse 1.1s ease-in-out infinite;
+  transition: none;
+}
+
+/* ──────── CLEAR BUTTON DISABLED ──────── */
+.btn-clear:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  color: var(--text3);
+  transform: none !important;
+  border-color: rgba(255,255,255,0.06) !important;
+  background: rgba(255,255,255,0.02) !important;
+}
+
+/* ──────── HISTORY PANEL ──────── */
+.btn-history {
+  font-family: var(--mono); font-size: 0.65rem;
+  background: rgba(124,109,250,0.1); border: 1px solid rgba(124,109,250,0.25);
+  color: var(--accent2); border-radius: 8px; padding: 5px 11px;
+  cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s;
+  letter-spacing: 0.04em; display: flex; align-items: center; gap: 5px;
+}
+.btn-history:hover { border-color: rgba(124,109,250,0.55); background: rgba(124,109,250,0.18); }
+.btn-history svg { width: 12px; height: 12px; }
+
+#history-backdrop {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  background: rgba(7,7,15,0.55); backdrop-filter: blur(4px);
+  animation: fade-in 0.2s ease both;
+}
+#history-backdrop.open { display: block; }
+@keyframes fade-in { from{opacity:0} to{opacity:1} }
+
+#history-panel {
+  position: fixed; top: 0; right: -380px; bottom: 0; width: 360px;
+  z-index: 101; background: var(--card);
+  border-left: 1px solid rgba(124,109,250,0.18);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,109,250,0.08);
+  display: flex; flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+#history-panel.open { right: 0; }
+
+.hist-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(12,12,24,0.6);
+}
+.hist-head-left { display: flex; align-items: center; gap: 8px; }
+.hist-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text); font-family: var(--mono); }
+.hist-badge {
+  background: var(--accent-soft); color: var(--accent2); border: 1px solid rgba(124,109,250,0.25);
+  border-radius: 99px; font-size: 0.58rem; font-family: var(--mono);
+  padding: 2px 7px; font-weight: 600;
+}
+.btn-hist-close {
+  background: none; border: 1px solid var(--border); border-radius: 7px;
+  color: var(--text3); font-size: 0.9rem; width: 28px; height: 28px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-hist-close:hover { color: var(--text); border-color: var(--border2); }
+
+.hist-list {
+  flex: 1; overflow-y: auto; padding: 12px 14px;
+  scrollbar-width: thin; scrollbar-color: var(--border2) transparent;
+}
+.hist-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%; gap: 10px; color: var(--text3);
+  font-family: var(--mono); font-size: 0.72rem; text-align: center;
+}
+.hist-empty-icon { font-size: 2rem; opacity: 0.4; }
+
+.hist-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px; border-radius: 10px;
+  border: 1px solid transparent;
+  margin-bottom: 6px; cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+  position: relative;
+}
+.hist-item:hover { background: rgba(124,109,250,0.07); border-color: rgba(124,109,250,0.18); }
+.hist-thumb {
+  width: 46px; height: 38px; border-radius: 7px; object-fit: cover;
+  border: 1px solid var(--border2); flex-shrink: 0;
+  background: var(--card2);
+}
+.hist-thumb-video {
+  width: 46px; height: 38px; border-radius: 7px; flex-shrink: 0;
+  background: var(--card2); border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.hist-info { flex: 1; min-width: 0; }
+.hist-name {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px;
+}
+.hist-meta { display: flex; align-items: center; gap: 8px; }
+.hist-date { font-family: var(--mono); font-size: 0.6rem; color: var(--text3); }
+.hist-views {
+  font-family: var(--mono); font-size: 0.6rem; color: var(--accent2);
+  display: flex; align-items: center; gap: 3px;
+}
+.hist-views svg { width: 10px; height: 10px; opacity: 0.7; }
+.hist-link {
+  font-family: var(--mono); font-size: 0.58rem; color: #a5b4fc;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 3px; max-width: 180px;
+}
+.hist-copy-btn {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text3); font-size: 0.6rem; font-family: var(--mono);
+  padding: 4px 8px; cursor: pointer; flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.hist-copy-btn:hover { border-color: var(--accent2); color: var(--accent2); background: var(--accent-soft); }
+.hist-copy-btn.ok { color: var(--green); border-color: var(--green); }
+
+.hist-foot {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(12,12,24,0.4);
+}
+.btn-clear-hist {
+  width: 100%; padding: 8px; font-family: var(--mono); font-size: 0.65rem;
+  background: none; border: 1px solid rgba(248,113,113,0.2); border-radius: 8px;
+  color: rgba(248,113,113,0.5); cursor: pointer; letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.btn-clear-hist:hover { border-color: rgba(248,113,113,0.5); color: var(--red); background: rgba(248,113,113,0.05); }
+
 /* Shake */
 .shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
 @keyframes shake {
@@ -594,6 +770,10 @@ body {
     <div class="app-user">
       <img id="user-avatar" class="av" src="" alt="" style="display:none">
       <span class="ut" id="user-tag"></span>
+      <button class="btn-history" onclick="openHistory()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><path d="M3.05 11a9 9 0 1 1 .5 4"/><polyline points="3 8 3 12 7 12"/></svg>
+        history
+      </button>
       <button class="btn-out" onclick="doLogout()">sign out</button>
     </div>
   </div>
@@ -616,7 +796,7 @@ body {
   <input type="file" id="file-input" accept="image/*" style="display:none" onchange="loadFile(this)" />
 
   <div class="actions">
-    <button class="btn-clear" onclick="clearFile()">Clear</button>
+    <button class="btn-clear" id="clear-btn" disabled onclick="clearFile()">Clear</button>
     <button class="btn-share" id="upload-btn" onclick="uploadAndShare()">Generate Share Link</button>
   </div>
 
@@ -653,6 +833,22 @@ body {
   </div>
   <div class="embed-hint">
     <strong>Send to Discord:</strong> Copy the image and paste it directly into Discord, or download and drag it in. Link preview works automatically.
+  </div>
+</div>
+
+<!-- HISTORY BACKDROP & PANEL -->
+<div id="history-backdrop" onclick="closeHistory()"></div>
+<div id="history-panel">
+  <div class="hist-head">
+    <div class="hist-head-left">
+      <span class="hist-title">My Uploads</span>
+      <span class="hist-badge" id="hist-count">0</span>
+    </div>
+    <button class="btn-hist-close" onclick="closeHistory()">✕</button>
+  </div>
+  <div class="hist-list" id="hist-list"></div>
+  <div class="hist-foot">
+    <button class="btn-clear-hist" onclick="clearHistory()">clear history</button>
   </div>
 </div>
 
@@ -795,6 +991,7 @@ body {
     document.getElementById('paste-zone').classList.add('has-file');
     document.getElementById('share-panel').style.display = 'none';
     document.getElementById('upload-progress').style.display = 'none';
+    document.getElementById('clear-btn').disabled = false;
     if (size) showBadge(size);
   }
 
@@ -806,6 +1003,7 @@ body {
     document.getElementById('paste-zone').classList.add('has-file');
     document.getElementById('share-panel').style.display = 'none';
     document.getElementById('upload-progress').style.display = 'none';
+    document.getElementById('clear-btn').disabled = false;
     if (size) showBadge(size);
   }
 
@@ -820,6 +1018,7 @@ body {
     document.getElementById('upload-progress').style.display = 'none';
     document.getElementById('file-input').value = '';
     document.getElementById('file-size-badge').style.display = 'none';
+    document.getElementById('clear-btn').disabled = true;
   }
 
   // ── Paste ──
@@ -911,10 +1110,14 @@ body {
         const data = await res.json();
         if (!data.success) throw new Error(data.error?.message || 'Upload failed');
         progEl.style.display = 'none';
-        document.getElementById('share-link-text').textContent = data.data.url_viewer;
+        const shareUrl = data.data.url_viewer;
+        document.getElementById('share-link-text').textContent = shareUrl;
         document.getElementById('share-panel').style.display = 'block';
         document.getElementById('copy-btn').textContent = 'Copy';
         document.getElementById('copy-btn').classList.remove('ok');
+        // Save to history with thumbnail
+        const thumb = currentDataURL ? currentDataURL.substring(0, 200000) : null; // cap thumb size
+        saveToHistory(shareUrl, 'image', thumb);
 
       } else {
         // Video: upload to GitHub Releases (free, 2GB/file)
@@ -967,6 +1170,7 @@ body {
         document.getElementById('share-panel').style.display = 'block';
         document.getElementById('copy-btn').textContent = 'Copy';
         document.getElementById('copy-btn').classList.remove('ok');
+        saveToHistory(videoURL, 'video', null);
       }
     } catch(e) {
       progEl.style.display = 'none';
@@ -1085,6 +1289,121 @@ body {
     if (vm) { showView(vm[1]); return; }
     if (isLoggedIn()) showApp(); else showScreen('login');
   }
+
+  // ── Window-level drag glow ──
+  let dragCounter = 0;
+  window.addEventListener('dragenter', e => {
+    e.preventDefault();
+    dragCounter++;
+    if (isVisible('app-screen')) {
+      document.getElementById('paste-zone').classList.add('window-drag');
+    }
+  });
+  window.addEventListener('dragleave', e => {
+    dragCounter--;
+    if (dragCounter <= 0) {
+      dragCounter = 0;
+      document.getElementById('paste-zone').classList.remove('window-drag');
+    }
+  });
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('drop', e => {
+    dragCounter = 0;
+    document.getElementById('paste-zone').classList.remove('window-drag');
+  });
+  // Remove glow when file dropped on the zone itself too
+  document.getElementById('paste-zone').addEventListener('drop', () => {
+    dragCounter = 0;
+    document.getElementById('paste-zone').classList.remove('window-drag');
+  });
+
+  // ── History ──
+  const HIST_KEY = 'jimpix_history';
+
+  function getHistory() {
+    try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); } catch(e) { return []; }
+  }
+
+  function saveToHistory(url, type, thumb) {
+    const hist = getHistory();
+    const entry = {
+      id: Date.now(),
+      url,
+      type,
+      thumb: thumb || null,
+      date: new Date().toISOString(),
+      views: 0
+    };
+    hist.unshift(entry);
+    // Keep max 50 entries
+    if (hist.length > 50) hist.pop();
+    localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+  }
+
+  function openHistory() {
+    renderHistory();
+    document.getElementById('history-backdrop').classList.add('open');
+    document.getElementById('history-panel').classList.add('open');
+  }
+
+  function closeHistory() {
+    document.getElementById('history-backdrop').classList.remove('open');
+    document.getElementById('history-panel').classList.remove('open');
+  }
+
+  function renderHistory() {
+    const hist = getHistory();
+    const list = document.getElementById('hist-list');
+    const badge = document.getElementById('hist-count');
+    badge.textContent = hist.length;
+
+    if (hist.length === 0) {
+      list.innerHTML = `<div class="hist-empty"><div class="hist-empty-icon">🗂️</div><div>No uploads yet</div><div style="opacity:0.6;font-size:0.6rem;margin-top:4px">Your shared links will appear here</div></div>`;
+      return;
+    }
+
+    list.innerHTML = hist.map(item => {
+      const d = new Date(item.date);
+      const dateStr = d.toLocaleDateString('hu-HU', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      const shortUrl = item.url.replace(/^https?:\/\//, '').substring(0, 36) + (item.url.length > 36 ? '…' : '');
+      const thumbEl = item.type === 'video'
+        ? `<div class="hist-thumb-video">🎬</div>`
+        : `<img class="hist-thumb" src="${item.thumb || ''}" alt="" onerror="this.style.display='none'" loading="lazy">`;
+
+      return `<div class="hist-item" id="hitem-${item.id}">
+        ${thumbEl}
+        <div class="hist-info">
+          <div class="hist-name">${item.type === 'video' ? 'Video' : 'Image'} · ${dateStr}</div>
+          <div class="hist-link">${shortUrl}</div>
+          <div class="hist-meta">
+            <span class="hist-views">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              ${item.views} views
+            </span>
+            <span class="hist-date"></span>
+          </div>
+        </div>
+        <button class="hist-copy-btn" id="hcopy-${item.id}" onclick="histCopy(${item.id}, '${item.url.replace(/'/g,"\\'")}')">copy</button>
+      </div>`;
+    }).join('');
+  }
+
+  function histCopy(id, url) {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('hcopy-' + id);
+      if (btn) { btn.textContent = 'copied!'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('ok'); }, 2000); }
+    });
+  }
+
+  function clearHistory() {
+    if (!confirm('Clear all upload history?')) return;
+    localStorage.removeItem(HIST_KEY);
+    renderHistory();
+  }
+
+  // ── Save to history after successful upload ──
+  // Patch share panel display to also save history
+  const _origUploadAndShare = uploadAndShare;
 
   window.addEventListener('hashchange', route);
   route();
