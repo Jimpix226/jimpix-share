@@ -343,7 +343,28 @@ body {
   box-shadow: 0 0 30px rgba(124,109,250,0.1);
 }
 #paste-zone:hover .dz-icon { transform: scale(1.08) translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,109,250,0.2); }
-#paste-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); border-style: solid; }
+#paste-zone.drag-over {
+  border-color: var(--accent2);
+  border-style: solid;
+  background: rgba(124,109,250,0.11);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 0 0 2px rgba(124,109,250,0.25), 0 0 15px rgba(139,92,246,0.5), 0 0 48px rgba(124,109,250,0.2);
+}
+#paste-zone.drag-over .dz-icon {
+  transform: scale(1.13) translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,109,250,0.4);
+  border-color: rgba(124,109,250,0.5);
+}
+
+/* Format tag flash */
+@keyframes fmt-flash {
+  0%   { color: var(--accent2); border-color: var(--accent); background: rgba(124,109,250,0.18);
+         box-shadow: 0 0 8px rgba(124,109,250,0.6); }
+  60%  { color: var(--accent2); border-color: rgba(124,109,250,0.6); background: rgba(124,109,250,0.1); }
+  100% { color: var(--text2); border-color: var(--border2); background: var(--card2); box-shadow: none; }
+}
+.fmt.flash { animation: fmt-flash 1.1s ease forwards; }
 #paste-zone.has-file { border-style: solid; border-color: rgba(124,109,250,0.3); padding: 16px; }
 #paste-zone.has-file .dz-idle { display: none; }
 #paste-zone.has-file #preview-img { display: block; }
@@ -370,17 +391,9 @@ body {
   border-radius: 5px; border: 1px solid var(--border);
   color: var(--text3); text-transform: uppercase;
   background: var(--card2);
-  transition: color 0.15s, border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  transition: color 0.15s, border-color 0.15s;
 }
 .type-image .fmt, .type-video .fmt { color: var(--text2); border-color: var(--border2); }
-@keyframes fmt-flash {
-  0%   { color: var(--accent2); border-color: var(--accent); background: rgba(124,109,250,0.18); box-shadow: 0 0 10px rgba(124,109,250,0.5), 0 0 20px rgba(124,109,250,0.25); }
-  60%  { color: var(--accent2); border-color: rgba(124,109,250,0.6); box-shadow: 0 0 6px rgba(124,109,250,0.3); }
-  100% { color: var(--text3); border-color: var(--border); background: var(--card2); box-shadow: none; }
-}
-.fmt.flash {
-  animation: fmt-flash 1.2s ease-out forwards;
-}
 
 #preview-img { display: none; max-width: 100%; max-height: 420px; border-radius: 10px; object-fit: contain; margin: 0 auto; }
 #preview-video { display: none; max-width: 100%; max-height: 420px; border-radius: 10px; outline: none; margin: 0 auto; }
@@ -391,40 +404,7 @@ body {
   border-radius: 7px; padding: 3px 9px;
   font-family: var(--mono); font-size: 0.62rem; color: var(--text2);
   pointer-events: none; display: none;
-  backdrop-filter: blur(8px);
 }
-
-/* Edit overlay shown when file loaded */
-.preview-overlay {
-  display: none;
-  position: absolute; inset: 0;
-  border-radius: var(--r2);
-  background: rgba(7,7,15,0.0);
-  transition: background 0.2s;
-  pointer-events: none;
-}
-#paste-zone.has-file .preview-overlay { display: block; pointer-events: auto; }
-#paste-zone.has-file:hover .preview-overlay { background: rgba(7,7,15,0.18); }
-
-.edit-btn-row {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 7px; opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
-}
-#paste-zone.has-file:hover .edit-btn-row { opacity: 1; pointer-events: auto; }
-.edit-btn {
-  display: flex; align-items: center; gap: 5px;
-  background: rgba(12,12,24,0.85); border: 1px solid rgba(124,109,250,0.4);
-  border-radius: 8px; padding: 6px 12px;
-  font-family: var(--mono); font-size: 0.62rem; color: var(--accent2);
-  cursor: pointer; white-space: nowrap; letter-spacing: 0.04em;
-  backdrop-filter: blur(12px);
-  transition: border-color 0.15s, background 0.15s, transform 0.15s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-.edit-btn:hover { border-color: var(--accent2); background: rgba(124,109,250,0.18); transform: translateY(-1px); }
-.edit-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
 
 /* Actions */
 .actions { display: grid; grid-template-columns: 1fr 2.5fr; gap: 10px; margin-top: 12px; }
@@ -452,31 +432,6 @@ body {
 .btn-share:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,109,250,0.5); }
 .btn-share:active { transform: translateY(0); }
 .btn-share:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
-
-/* Progress bar on button */
-.btn-share .btn-progress-bar {
-  position: absolute; bottom: 0; left: 0; height: 3px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 0 0 var(--r) var(--r);
-  width: 0%; transition: width 0.3s ease;
-  pointer-events: none;
-}
-.btn-share.loading {
-  cursor: not-allowed;
-}
-@keyframes btn-prog-indeterminate {
-  0%   { left: -40%; width: 40%; }
-  100% { left: 110%; width: 40%; }
-}
-.btn-share.loading .btn-progress-bar {
-  width: auto !important;
-  left: 0; right: 0;
-  background: rgba(255,255,255,0.45);
-  animation: btn-prog-indeterminate 1.3s ease-in-out infinite;
-  height: 3px;
-  position: absolute; bottom: 0;
-  border-radius: 0 0 var(--r) var(--r);
-}
 
 /* Upload progress */
 #upload-progress {
@@ -618,28 +573,16 @@ body {
 
 /* ──────── WINDOW-LEVEL DRAG GLOW ──────── */
 @keyframes dz-glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 2px var(--accent), 0 0 15px rgba(139,92,246,0.5), 0 0 40px rgba(124,109,250,0.25), 0 0 80px rgba(124,109,250,0.12); }
-  50%       { box-shadow: 0 0 0 2px var(--accent2), 0 0 25px rgba(167,139,250,0.7), 0 0 60px rgba(167,139,250,0.35), 0 0 100px rgba(167,139,250,0.18); }
+  0%, 100% { box-shadow: 0 0 0 2px var(--accent), 0 0 28px rgba(124,109,250,0.45), 0 0 60px rgba(124,109,250,0.2); }
+  50%       { box-shadow: 0 0 0 2px var(--accent2), 0 0 48px rgba(167,139,250,0.65), 0 0 90px rgba(167,139,250,0.3); }
 }
 #paste-zone.window-drag {
   border-color: var(--accent2) !important;
-  border-style: solid !important;
-  background: rgba(124,109,250,0.11) !important;
-  backdrop-filter: blur(28px) !important;
-  -webkit-backdrop-filter: blur(28px) !important;
+  border-style: dashed !important;
+  background: rgba(124,109,250,0.09) !important;
   animation: dz-glow-pulse 1.1s ease-in-out infinite;
   transition: none;
 }
-/* Dim overlay when dragging over window */
-#drag-dim {
-  display: none;
-  position: fixed; inset: 0; z-index: 5;
-  background: rgba(7,7,15,0.45);
-  backdrop-filter: blur(2px);
-  pointer-events: none;
-  animation: fade-in 0.2s ease both;
-}
-#drag-dim.active { display: block; }
 
 /* ──────── CLEAR BUTTON DISABLED ──────── */
 .btn-clear:disabled {
@@ -802,9 +745,6 @@ body {
   <div class="amb-blob ab3"></div>
 </div>
 
-<!-- Drag dim overlay -->
-<div id="drag-dim"></div>
-
 <!-- Particles (login only) -->
 <div id="particles"></div>
 
@@ -872,25 +812,13 @@ body {
     <img id="preview-img" src="" alt="preview" />
     <video id="preview-video" controls></video>
     <div class="size-badge" id="file-size-badge"></div>
-    <div class="preview-overlay">
-      <div class="edit-btn-row">
-        <button class="edit-btn" onclick="rotatePreview(event)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-          Forgatás
-        </button>
-        <button class="edit-btn" onclick="cropPreview(event)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 2 6 18 22 18"/><polyline points="2 6 18 6 18 22"/></svg>
-          Vágás
-        </button>
-      </div>
-    </div>
   </div>
 
   <input type="file" id="file-input" accept="image/*" style="display:none" onchange="loadFile(this)" />
 
   <div class="actions">
     <button class="btn-clear" id="clear-btn" disabled onclick="clearFile()">Clear</button>
-    <button class="btn-share" id="upload-btn" onclick="uploadAndShare()">Generate Share Link<span class="btn-progress-bar"></span></button>
+    <button class="btn-share" id="upload-btn" onclick="uploadAndShare()">Generate Share Link</button>
   </div>
 
   <div id="upload-progress">
@@ -1021,9 +949,7 @@ body {
     const params = new URLSearchParams(fragment);
     const token = params.get('access_token');
     const st = params.get('state');
-    const savedState = sessionStorage.getItem('dc_state');
-    // If state doesn't match (e.g. page refreshed), just show login cleanly
-    if (!token || (savedState && st !== savedState)) { showScreen('login'); return; }
+    if (!token || st !== sessionStorage.getItem('dc_state')) { showScreen('login'); return; }
     sessionStorage.removeItem('dc_state');
     try {
       const res = await fetch('https://discord.com/api/users/@me', { headers: { Authorization: 'Bearer ' + token } });
@@ -1031,8 +957,9 @@ body {
       const av = u.avatar
         ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=64`
         : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
-      sessionStorage.setItem(SESSION_KEY, '1');
-      sessionStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
+      localStorage.setItem(SESSION_KEY, '1');
+      localStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
+      history.replaceState(null, '', location.pathname);
       showApp();
     } catch(e) { showScreen('login'); }
   }
@@ -1043,7 +970,7 @@ body {
     const p = document.getElementById('password').value;
     const err = document.getElementById('login-error');
     if (u === CORRECT_USER && p === CORRECT_PASS) {
-      sessionStorage.setItem(SESSION_KEY, '1');
+      localStorage.setItem(SESSION_KEY, '1');
       err.textContent = '';
       showApp();
     } else {
@@ -1058,8 +985,8 @@ body {
   });
 
   function doLogout() {
-    sessionStorage.removeItem(SESSION_KEY);
-    sessionStorage.removeItem(DC_USER_KEY);
+    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(DC_USER_KEY);
     history.replaceState(null, '', location.pathname);
     location.reload();
   }
@@ -1078,9 +1005,8 @@ body {
     b.textContent = fmtBytes(sz); b.style.display = 'block';
   }
 
-  function setImage(dataURL, size, mimeType) {
+  function setImage(dataURL, size) {
     currentDataURL = dataURL; currentFileType = 'image'; currentVideoBlob = null;
-    _rotationDeg = 0;
     document.getElementById('preview-img').src = dataURL;
     document.getElementById('preview-video').style.display = 'none';
     document.getElementById('paste-zone').classList.add('has-file');
@@ -1088,7 +1014,6 @@ body {
     document.getElementById('upload-progress').style.display = 'none';
     document.getElementById('clear-btn').disabled = false;
     if (size) showBadge(size);
-    if (mimeType) flashFormat(mimeType);
   }
 
   function setVideo(blob, size) {
@@ -1101,8 +1026,6 @@ body {
     document.getElementById('upload-progress').style.display = 'none';
     document.getElementById('clear-btn').disabled = false;
     if (size) showBadge(size);
-    if (blob.type) flashFormat(blob.type);
-  }
   }
 
   function clearFile() {
@@ -1127,9 +1050,8 @@ body {
     for (const item of items) {
       if (item.type.startsWith('image/')) {
         const blob = item.getAsFile();
-        const mime = item.type;
         const reader = new FileReader();
-        reader.onload = ev => setImage(ev.target.result, blob.size, mime);
+        reader.onload = ev => setImage(ev.target.result, blob.size);
         reader.readAsDataURL(blob); break;
       }
     }
@@ -1140,7 +1062,7 @@ body {
     const file = input.files[0]; if (!file) return;
     if (file.type.startsWith('image/')) {
       const r = new FileReader();
-      r.onload = ev => setImage(ev.target.result, file.size, file.type);
+      r.onload = ev => setImage(ev.target.result, file.size);
       r.readAsDataURL(file);
     } else if (file.type.startsWith('video/')) {
       setVideo(file, file.size);
@@ -1155,7 +1077,7 @@ body {
     e.preventDefault(); pz.classList.remove('drag-over');
     const file = e.dataTransfer.files[0]; if (!file) return;
     if (file.type.startsWith('image/')) {
-      const r = new FileReader(); r.onload = ev => setImage(ev.target.result, file.size, file.type); r.readAsDataURL(file);
+      const r = new FileReader(); r.onload = ev => setImage(ev.target.result, file.size); r.readAsDataURL(file);
     } else if (file.type.startsWith('video/')) { setVideo(file, file.size); }
   });
 
@@ -1196,9 +1118,6 @@ body {
     progEl.style.display = 'block';
     document.getElementById('share-panel').style.display = 'none';
     uploadBtn.disabled = true;
-    uploadBtn.classList.add('loading');
-    const origLabel = uploadBtn.childNodes[0].textContent;
-    uploadBtn.childNodes[0].textContent = 'Generating...';
 
     try {
       if (currentFileType === 'image') {
@@ -1279,8 +1198,6 @@ body {
       alert('Upload failed: ' + e.message);
     } finally {
       uploadBtn.disabled = false;
-      uploadBtn.classList.remove('loading');
-      uploadBtn.childNodes[0].textContent = 'Generate Share Link';
     }
   }
 
@@ -1339,10 +1256,10 @@ body {
     document.getElementById('particles').style.display = (name === 'login') ? 'block' : 'none';
   }
 
-  function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
+  function isLoggedIn() { return localStorage.getItem(SESSION_KEY) === '1'; }
 
   function showApp() {
-    const dcUser = sessionStorage.getItem(DC_USER_KEY);
+    const dcUser = localStorage.getItem(DC_USER_KEY);
     if (dcUser) {
       try {
         const u = JSON.parse(dcUser);
@@ -1386,11 +1303,7 @@ body {
   // ── Router ──
   function route() {
     const hash = location.hash;
-    // OAuth callback: must have access_token AND token_type in the fragment
-    const isOAuth = hash.includes('access_token=') && hash.includes('token_type=');
-    if (isOAuth) {
-      // Clean the URL immediately so refresh doesn't re-trigger OAuth
-      history.replaceState(null, '', location.pathname);
+    if (hash.startsWith('#access_token=') || hash.includes('access_token=')) {
       handleDiscordCallback(hash.slice(1)); return;
     }
     const vm = hash.match(/^#view=(.+)$/);
@@ -1405,7 +1318,6 @@ body {
     dragCounter++;
     if (isVisible('app-screen')) {
       document.getElementById('paste-zone').classList.add('window-drag');
-      document.getElementById('drag-dim').classList.add('active');
     }
   });
   window.addEventListener('dragleave', e => {
@@ -1413,83 +1325,20 @@ body {
     if (dragCounter <= 0) {
       dragCounter = 0;
       document.getElementById('paste-zone').classList.remove('window-drag');
-      document.getElementById('drag-dim').classList.remove('active');
     }
   });
   window.addEventListener('dragover', e => e.preventDefault());
   window.addEventListener('drop', e => {
     dragCounter = 0;
     document.getElementById('paste-zone').classList.remove('window-drag');
-    document.getElementById('drag-dim').classList.remove('active');
   });
   // Remove glow when file dropped on the zone itself too
   document.getElementById('paste-zone').addEventListener('drop', () => {
     dragCounter = 0;
     document.getElementById('paste-zone').classList.remove('window-drag');
-    document.getElementById('drag-dim').classList.remove('active');
   });
 
-  // ── Format tag flash ──
-  const FORMAT_MAP = {
-    'image/png': 'PNG', 'image/jpeg': 'JPG', 'image/jpg': 'JPG',
-    'image/gif': 'GIF', 'image/webp': 'WEBP', 'image/bmp': 'BMP',
-    'video/mp4': 'MP4', 'video/webm': 'WEBM', 'video/quicktime': 'MOV',
-    'video/x-msvideo': 'AVI', 'video/x-matroska': 'MKV'
-  };
-
-  function flashFormat(mimeType) {
-    const label = FORMAT_MAP[mimeType];
-    if (!label) return;
-    const fmts = document.querySelectorAll('#zone-formats .fmt');
-    fmts.forEach(el => {
-      if (el.textContent.trim() === label) {
-        el.classList.remove('flash');
-        void el.offsetWidth; // reflow to restart animation
-        el.classList.add('flash');
-        setTimeout(() => el.classList.remove('flash'), 1400);
-      }
-    });
-  }
-
-  // ── Rotate/Crop helpers ──
-  let _rotationDeg = 0;
-
-  function rotatePreview(e) {
-    e.stopPropagation();
-    if (!currentDataURL) return;
-    _rotationDeg = (_rotationDeg + 90) % 360;
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const swap = _rotationDeg === 90 || _rotationDeg === 270;
-      canvas.width  = swap ? img.height : img.width;
-      canvas.height = swap ? img.width  : img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.translate(canvas.width / 2, canvas.height / 2);
-      ctx.rotate((_rotationDeg * Math.PI) / 180);
-      ctx.drawImage(img, -img.width / 2, -img.height / 2);
-      currentDataURL = canvas.toDataURL();
-      document.getElementById('preview-img').src = currentDataURL;
-    };
-    img.src = currentDataURL;
-  }
-
-  function cropPreview(e) {
-    e.stopPropagation();
-    if (!currentDataURL) { alert('Képet kell először betölteni a vágáshoz.'); return; }
-    // Simple center-crop to square
-    const img = new Image();
-    img.onload = () => {
-      const size = Math.min(img.width, img.height);
-      const canvas = document.createElement('canvas');
-      canvas.width = size; canvas.height = size;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, size, size);
-      currentDataURL = canvas.toDataURL();
-      document.getElementById('preview-img').src = currentDataURL;
-    };
-    img.src = currentDataURL;
-  }
+  // ── History ──
   const HIST_KEY = 'jimpix_history';
 
   function getHistory() {
