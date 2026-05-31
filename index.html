@@ -104,7 +104,6 @@ body {
   70% { opacity: 0.8; }
 }
 
-/* Dot grid */
 .amb-dots {
   position: absolute; inset: 0;
   background-image: radial-gradient(circle, rgba(124,109,250,0.18) 1px, transparent 1px);
@@ -153,8 +152,6 @@ body {
     0 32px 80px rgba(0,0,0,0.5),
     0 0 120px rgba(124,109,250,0.12);
 }
-
-/* Glowing top gradient line */
 .login-wrap::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -165,8 +162,6 @@ body {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
-
-/* Radial shimmer behind logo */
 .login-wrap::after {
   content: '';
   position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
@@ -196,7 +191,6 @@ body {
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* Discord btn */
 .btn-dc {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 13px 20px;
@@ -222,7 +216,6 @@ body {
 }
 .btn-dc:active { transform: translateY(0); }
 
-/* Divider */
 .divider {
   display: flex; align-items: center; gap: 12px;
   margin: 22px 0; color: var(--text3);
@@ -234,7 +227,6 @@ body {
   background: linear-gradient(90deg, transparent, var(--border2), transparent);
 }
 
-/* Fields */
 .field { margin-bottom: 14px; }
 .field label {
   display: block; font-size: 0.63rem; font-weight: 600;
@@ -256,7 +248,6 @@ body {
 }
 .field input::placeholder { color: var(--text3); }
 
-/* Primary btn */
 .btn-primary {
   display: block; width: 100%; padding: 13px;
   background: linear-gradient(135deg, #7c6dfa, #a78bfa);
@@ -294,7 +285,6 @@ body {
   width: 100%; max-width: 680px; padding: 28px 20px;
 }
 
-/* Header */
 .app-header {
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 32px;
@@ -313,7 +303,6 @@ body {
 }
 .btn-out:hover { border-color: var(--red); color: var(--red); }
 
-/* Tabs */
 .tabs { display: flex; gap: 4px; margin-bottom: 18px; background: rgba(12,12,24,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 4px; }
 .tab {
   flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -326,7 +315,6 @@ body {
 .tab:hover { color: var(--text2); }
 .tab.active { background: var(--accent-soft); color: var(--accent2); }
 
-/* Drop zone */
 #paste-zone {
   border: 1.5px dashed rgba(124,109,250,0.3);
   border-radius: var(--r2); padding: 64px 40px;
@@ -357,10 +345,8 @@ body {
   border-color: rgba(124,109,250,0.5);
 }
 
-/* Format tag flash */
 @keyframes fmt-flash {
-  0%   { color: var(--accent2); border-color: var(--accent); background: rgba(124,109,250,0.18);
-         box-shadow: 0 0 8px rgba(124,109,250,0.6); }
+  0%   { color: var(--accent2); border-color: var(--accent); background: rgba(124,109,250,0.18); box-shadow: 0 0 8px rgba(124,109,250,0.6); }
   60%  { color: var(--accent2); border-color: rgba(124,109,250,0.6); background: rgba(124,109,250,0.1); }
   100% { color: var(--text2); border-color: var(--border2); background: var(--card2); box-shadow: none; }
 }
@@ -406,7 +392,6 @@ body {
   pointer-events: none; display: none;
 }
 
-/* Actions */
 .actions { display: grid; grid-template-columns: 1fr 2.5fr; gap: 10px; margin-top: 12px; }
 .btn-clear {
   padding: 11px; background: rgba(255,255,255,0.04);
@@ -433,7 +418,6 @@ body {
 .btn-share:active { transform: translateY(0); }
 .btn-share:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 
-/* Upload progress */
 #upload-progress {
   display: none; margin-top: 12px;
   background: var(--card); border: 1px solid var(--border);
@@ -459,7 +443,6 @@ body {
 }
 @keyframes prog-anim { 0% { transform: translateX(-300%); } 100% { transform: translateX(500%); } }
 
-/* Share panel */
 #share-panel {
   display: none; margin-top: 12px;
   background: var(--card); border: 1px solid rgba(52,211,153,0.2);
@@ -584,7 +567,6 @@ body {
   transition: none;
 }
 
-/* ──────── CLEAR BUTTON DISABLED ──────── */
 .btn-clear:disabled {
   opacity: 0.32;
   cursor: not-allowed;
@@ -716,14 +698,12 @@ body {
 }
 .btn-clear-hist:hover { border-color: rgba(248,113,113,0.5); color: var(--red); background: rgba(248,113,113,0.05); }
 
-/* Shake */
 .shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
 @keyframes shake {
   10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
   30%,50%,70%{transform:translateX(-5px)} 40%,60%{transform:translateX(5px)}
 }
 
-/* Responsive */
 @media (max-width: 500px) {
   .login-wrap { padding: 36px 22px 26px; }
   .actions { grid-template-columns: 1fr 1.8fr; }
@@ -732,7 +712,6 @@ body {
 </head>
 <body>
 
-<!-- Ambient BG -->
 <div id="video-bg">
   <video autoplay muted loop playsinline>
     <source src="gojo-underwater-jujutsu-kaisen-moewalls-com.mp4" type="video/mp4">
@@ -745,7 +724,6 @@ body {
   <div class="amb-blob ab3"></div>
 </div>
 
-<!-- Particles (login only) -->
 <div id="particles"></div>
 
 <!-- OAUTH -->
@@ -797,6 +775,17 @@ body {
       </button>
       <button class="btn-out" onclick="doLogout()">sign out</button>
     </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tab-image" onclick="setMode('image')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Image
+    </button>
+    <button class="tab" id="tab-video" onclick="setMode('video')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      Video
+    </button>
   </div>
 
   <div id="paste-zone" tabindex="0" onclick="document.getElementById('file-input').click()">
@@ -857,7 +846,7 @@ body {
   </div>
 </div>
 
-<!-- HISTORY BACKDROP & PANEL -->
+<!-- HISTORY -->
 <div id="history-backdrop" onclick="closeHistory()"></div>
 <div id="history-panel">
   <div class="hist-head">
@@ -874,23 +863,20 @@ body {
 </div>
 
 <script>
+  /* ── CONFIG ── */
   const DISCORD_CLIENT_ID    = '1509930043332231410';
   const DISCORD_REDIRECT_URI = location.origin + location.pathname;
   const IMGBB_API_KEY        = 'cf23a7563367b04561c9f19d30148c63';
+  const CLOUDINARY_CLOUD     = 'dq1xdtkwy';
+  const CLOUDINARY_PRESET    = 'YOUR_UPLOAD_PRESET';
+  const CORRECT_USER         = 'Jimpix';
+  const CORRECT_PASS         = 'hessdalen';
+  const SESSION_KEY          = 'jimpix_auth';
+  const DC_USER_KEY          = 'jimpix_dc_user';
+  const HIST_KEY             = 'jimpix_history';
+  const SESSION_EXPIRY_DAYS  = 30; // bejelentkezve marad 30 napig
 
-  // Cloudinary – video feltöltéshez (ingyenes, 25GB, CORS OK)
-  // 1. Regisztrálj: https://cloudinary.com
-  // 2. Settings > Upload > Add upload preset > Signing Mode: Unsigned
-  // 3. Töltsd ki az alábbi két értéket:
-  const CLOUDINARY_CLOUD  = 'dq1xdtkwy';    // Dashboard bal felső sarok
-  const CLOUDINARY_PRESET = 'YOUR_UPLOAD_PRESET'; // az unsigned preset neve
-
-  const CORRECT_USER = 'Jimpix';
-  const CORRECT_PASS = 'hessdalen';
-  const SESSION_KEY  = 'jimpix_auth';
-  const DC_USER_KEY  = 'jimpix_dc_user';
-
-  // ── Particles ──
+  /* ── PARTICLES ── */
   (function spawnParticles() {
     const field = document.getElementById('particles');
     const colors = ['#7c6dfa','#a78bfa','#34d399','rgba(255,255,255,0.6)'];
@@ -906,7 +892,37 @@ body {
     }
   })();
 
-  // ── Mode ──
+  /* ── SESSION CHECK (30 napos lejárat) ── */
+  function isLoggedIn() {
+    if (localStorage.getItem(SESSION_KEY) !== '1') return false;
+    const raw = localStorage.getItem(DC_USER_KEY);
+    if (raw) {
+      try {
+        const u = JSON.parse(raw);
+        if (u.savedAt) {
+          const expiry = SESSION_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+          if (Date.now() - u.savedAt > expiry) {
+            localStorage.removeItem(SESSION_KEY);
+            localStorage.removeItem(DC_USER_KEY);
+            return false;
+          }
+        }
+      } catch(e) {}
+    }
+    // Jelszavas belépésnél tárolt idő ellenőrzése
+    const loginTime = localStorage.getItem('jimpix_login_time');
+    if (loginTime && !raw) {
+      const expiry = SESSION_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+      if (Date.now() - parseInt(loginTime) > expiry) {
+        localStorage.removeItem(SESSION_KEY);
+        localStorage.removeItem('jimpix_login_time');
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /* ── MODE ── */
   let currentMode = 'image';
 
   function setMode(mode) {
@@ -933,13 +949,16 @@ body {
     }
   }
 
-  // ── Discord OAuth ──
+  /* ── DISCORD OAUTH ── */
   function startDiscordLogin() {
     const state = Math.random().toString(36).slice(2);
     sessionStorage.setItem('dc_state', state);
     const params = new URLSearchParams({
-      client_id: DISCORD_CLIENT_ID, redirect_uri: DISCORD_REDIRECT_URI,
-      response_type: 'token', scope: 'identify', state
+      client_id: DISCORD_CLIENT_ID,
+      redirect_uri: DISCORD_REDIRECT_URI,
+      response_type: 'token',
+      scope: 'identify',
+      state
     });
     location.href = 'https://discord.com/oauth2/authorize?' + params;
   }
@@ -949,28 +968,47 @@ body {
     const params = new URLSearchParams(fragment);
     const token = params.get('access_token');
     const st = params.get('state');
-    if (!token || st !== sessionStorage.getItem('dc_state')) { showScreen('login'); return; }
+    const savedState = sessionStorage.getItem('dc_state');
+
+    // State ellenőrzés: ha nincs savedState (pl. tab reload), engedni kell
+    if (!token || (savedState && st !== savedState)) {
+      showScreen('login'); return;
+    }
     sessionStorage.removeItem('dc_state');
+
     try {
-      const res = await fetch('https://discord.com/api/users/@me', { headers: { Authorization: 'Bearer ' + token } });
+      const res = await fetch('https://discord.com/api/users/@me', {
+        headers: { Authorization: 'Bearer ' + token }
+      });
       const u = await res.json();
       const av = u.avatar
         ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=64`
-        : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
+        : `https://cdn.discordapp.com/embed/avatars/${Number(BigInt(u.id) % 6n)}.png`;
+
       localStorage.setItem(SESSION_KEY, '1');
-      localStorage.setItem(DC_USER_KEY, JSON.stringify({ username: u.username, discriminator: u.discriminator, avatar: av }));
+      localStorage.setItem(DC_USER_KEY, JSON.stringify({
+        username: u.username,
+        discriminator: u.discriminator,
+        avatar: av,
+        savedAt: Date.now()   // ← lejárat számláláshoz
+      }));
+
       history.replaceState(null, '', location.pathname);
       showApp();
-    } catch(e) { showScreen('login'); }
+    } catch(e) {
+      console.error('Discord auth error:', e);
+      showScreen('login');
+    }
   }
 
-  // ── Password auth ──
+  /* ── PASSWORD AUTH ── */
   function doLogin() {
     const u = document.getElementById('username').value.trim();
     const p = document.getElementById('password').value;
     const err = document.getElementById('login-error');
     if (u === CORRECT_USER && p === CORRECT_PASS) {
       localStorage.setItem(SESSION_KEY, '1');
+      localStorage.setItem('jimpix_login_time', Date.now().toString()); // lejárat
       err.textContent = '';
       showApp();
     } else {
@@ -987,11 +1025,12 @@ body {
   function doLogout() {
     localStorage.removeItem(SESSION_KEY);
     localStorage.removeItem(DC_USER_KEY);
+    localStorage.removeItem('jimpix_login_time');
     history.replaceState(null, '', location.pathname);
     location.reload();
   }
 
-  // ── File state ──
+  /* ── FILE STATE ── */
   let currentDataURL = null, currentFileType = null, currentVideoBlob = null;
 
   function fmtBytes(b) {
@@ -1042,7 +1081,7 @@ body {
     document.getElementById('clear-btn').disabled = true;
   }
 
-  // ── Paste ──
+  /* ── PASTE ── */
   document.addEventListener('paste', e => {
     if (!isLoggedIn()) return;
     const items = e.clipboardData?.items;
@@ -1057,7 +1096,7 @@ body {
     }
   });
 
-  // ── File picker ──
+  /* ── FILE PICKER ── */
   function loadFile(input) {
     const file = input.files[0]; if (!file) return;
     if (file.type.startsWith('image/')) {
@@ -1069,7 +1108,7 @@ body {
     }
   }
 
-  // ── Drag & drop ──
+  /* ── DRAG & DROP ── */
   const pz = document.getElementById('paste-zone');
   pz.addEventListener('dragover', e => { e.preventDefault(); pz.classList.add('drag-over'); });
   pz.addEventListener('dragleave', () => pz.classList.remove('drag-over'));
@@ -1081,7 +1120,7 @@ body {
     } else if (file.type.startsWith('video/')) { setVideo(file, file.size); }
   });
 
-  // ── Image compression ──
+  /* ── IMAGE COMPRESSION ── */
   async function compressImage(dataURL, maxKB = 4096) {
     return new Promise(resolve => {
       const img = new Image();
@@ -1104,10 +1143,9 @@ body {
     });
   }
 
-  // ── Upload & share ──
-  // NOTE: No video size limit — any size is accepted and stored locally
+  /* ── UPLOAD & SHARE ── */
   async function uploadAndShare() {
-    const progEl = document.getElementById('upload-progress');
+    const progEl  = document.getElementById('upload-progress');
     const progTxt = document.getElementById('progress-text');
     const uploadBtn = document.getElementById('upload-btn');
 
@@ -1136,18 +1174,16 @@ body {
         document.getElementById('share-panel').style.display = 'block';
         document.getElementById('copy-btn').textContent = 'Copy';
         document.getElementById('copy-btn').classList.remove('ok');
-        // Save to history with thumbnail
-        const thumb = currentDataURL ? currentDataURL.substring(0, 200000) : null; // cap thumb size
+        const thumb = currentDataURL ? currentDataURL.substring(0, 200000) : null;
         saveToHistory(shareUrl, 'image', thumb);
 
       } else {
-        // Video: upload to GitHub Releases (free, 2GB/file)
+        // Video: GitHub Releases
         const GH_TOKEN = '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';
         const GH_REPO  = 'Jimpix226/jimpix-share';
         const GH_API   = 'https://api.github.com';
         const headers  = { 'Authorization': 'Bearer ' + GH_TOKEN, 'Accept': 'application/vnd.github+json' };
 
-        // 1. Create a release tag
         progTxt.textContent = 'Creating release...';
         const tag = 'video-' + Date.now();
         const relRes = await fetch(`${GH_API}/repos/${GH_REPO}/releases`, {
@@ -1159,7 +1195,6 @@ body {
         const relData = await relRes.json();
         const uploadURL = relData.upload_url.replace('{?name,label}', '');
 
-        // 2. Upload the video asset with progress
         progTxt.textContent = 'Uploading video... 0%';
         const ext = currentVideoBlob.type.includes('webm') ? 'webm' : currentVideoBlob.type.includes('mov') ? 'mov' : 'mp4';
         const filename = `video_${Date.now()}.${ext}`;
@@ -1177,8 +1212,7 @@ body {
           };
           xhr.onload = () => {
             if (xhr.status === 201) {
-              const data = JSON.parse(xhr.responseText);
-              resolve(data.browser_download_url);
+              resolve(JSON.parse(xhr.responseText).browser_download_url);
             } else {
               reject(new Error('Asset upload failed (HTTP ' + xhr.status + ')'));
             }
@@ -1186,6 +1220,7 @@ body {
           xhr.onerror = () => reject(new Error('Network error during upload.'));
           xhr.send(currentVideoBlob);
         });
+
         progEl.style.display = 'none';
         document.getElementById('share-link-text').textContent = videoURL;
         document.getElementById('share-panel').style.display = 'block';
@@ -1235,7 +1270,7 @@ body {
     });
   }
 
-  // ── Screens ──
+  /* ── SCREENS ── */
   function isVisible(id) {
     const el = document.getElementById(id);
     return el && el.classList.contains('active');
@@ -1252,21 +1287,21 @@ body {
     const map = { login: 'login-screen', app: 'app-screen', view: 'view-screen', oauth: 'oauth-screen' };
     const el = document.getElementById(map[name] || name);
     el.classList.add('active');
-    // Particles only on login
     document.getElementById('particles').style.display = (name === 'login') ? 'block' : 'none';
   }
 
-  function isLoggedIn() { return localStorage.getItem(SESSION_KEY) === '1'; }
-
   function showApp() {
-    const dcUser = localStorage.getItem(DC_USER_KEY);
-    if (dcUser) {
+    const dcRaw = localStorage.getItem(DC_USER_KEY);
+    if (dcRaw) {
       try {
-        const u = JSON.parse(dcUser);
+        const u = JSON.parse(dcRaw);
         const av = document.getElementById('user-avatar');
         av.src = u.avatar; av.style.display = 'block';
         document.getElementById('user-tag').textContent = u.username;
       } catch(e) {}
+    } else {
+      // Jelszavas login: megjelenítjük a felhasználónevet
+      document.getElementById('user-tag').textContent = CORRECT_USER;
     }
     showScreen('app');
   }
@@ -1283,7 +1318,7 @@ body {
     viewImg.style.display = 'none'; viewVid.style.display = 'none'; copyBtn.style.display = 'none';
 
     if (data) {
-      if (data.startsWith('data:video/') || data.startsWith('data:video')) {
+      if (data.startsWith('data:video/')) {
         viewVid.src = data; viewVid.style.display = 'block';
         dlLink.href = data; dlLink.download = 'video';
         if (hint) hint.innerHTML = '<strong>Tip:</strong> Download and upload directly to Discord for best playback.';
@@ -1300,7 +1335,7 @@ body {
     }
   }
 
-  // ── Router ──
+  /* ── ROUTER ── */
   function route() {
     const hash = location.hash;
     if (hash.startsWith('#access_token=') || hash.includes('access_token=')) {
@@ -1311,52 +1346,32 @@ body {
     if (isLoggedIn()) showApp(); else showScreen('login');
   }
 
-  // ── Window-level drag glow ──
+  /* ── WINDOW-LEVEL DRAG GLOW ── */
   let dragCounter = 0;
   window.addEventListener('dragenter', e => {
-    e.preventDefault();
-    dragCounter++;
-    if (isVisible('app-screen')) {
-      document.getElementById('paste-zone').classList.add('window-drag');
-    }
+    e.preventDefault(); dragCounter++;
+    if (isVisible('app-screen')) document.getElementById('paste-zone').classList.add('window-drag');
   });
-  window.addEventListener('dragleave', e => {
+  window.addEventListener('dragleave', () => {
     dragCounter--;
-    if (dragCounter <= 0) {
-      dragCounter = 0;
-      document.getElementById('paste-zone').classList.remove('window-drag');
-    }
+    if (dragCounter <= 0) { dragCounter = 0; document.getElementById('paste-zone').classList.remove('window-drag'); }
   });
   window.addEventListener('dragover', e => e.preventDefault());
-  window.addEventListener('drop', e => {
-    dragCounter = 0;
-    document.getElementById('paste-zone').classList.remove('window-drag');
+  window.addEventListener('drop', () => {
+    dragCounter = 0; document.getElementById('paste-zone').classList.remove('window-drag');
   });
-  // Remove glow when file dropped on the zone itself too
   document.getElementById('paste-zone').addEventListener('drop', () => {
-    dragCounter = 0;
-    document.getElementById('paste-zone').classList.remove('window-drag');
+    dragCounter = 0; document.getElementById('paste-zone').classList.remove('window-drag');
   });
 
-  // ── History ──
-  const HIST_KEY = 'jimpix_history';
-
+  /* ── HISTORY ── */
   function getHistory() {
     try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); } catch(e) { return []; }
   }
 
   function saveToHistory(url, type, thumb) {
     const hist = getHistory();
-    const entry = {
-      id: Date.now(),
-      url,
-      type,
-      thumb: thumb || null,
-      date: new Date().toISOString(),
-      views: 0
-    };
-    hist.unshift(entry);
-    // Keep max 50 entries
+    hist.unshift({ id: Date.now(), url, type, thumb: thumb || null, date: new Date().toISOString(), views: 0 });
     if (hist.length > 50) hist.pop();
     localStorage.setItem(HIST_KEY, JSON.stringify(hist));
   }
@@ -1375,8 +1390,7 @@ body {
   function renderHistory() {
     const hist = getHistory();
     const list = document.getElementById('hist-list');
-    const badge = document.getElementById('hist-count');
-    badge.textContent = hist.length;
+    document.getElementById('hist-count').textContent = hist.length;
 
     if (hist.length === 0) {
       list.innerHTML = `<div class="hist-empty"><div class="hist-empty-icon">🗂️</div><div>No uploads yet</div><div style="opacity:0.6;font-size:0.6rem;margin-top:4px">Your shared links will appear here</div></div>`;
@@ -1390,7 +1404,6 @@ body {
       const thumbEl = item.type === 'video'
         ? `<div class="hist-thumb-video">🎬</div>`
         : `<img class="hist-thumb" src="${item.thumb || ''}" alt="" onerror="this.style.display='none'" loading="lazy">`;
-
       return `<div class="hist-item" id="hitem-${item.id}">
         ${thumbEl}
         <div class="hist-info">
@@ -1401,7 +1414,6 @@ body {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
               ${item.views} views
             </span>
-            <span class="hist-date"></span>
           </div>
         </div>
         <button class="hist-copy-btn" id="hcopy-${item.id}" onclick="histCopy(${item.id}, '${item.url.replace(/'/g,"\\'")}')">copy</button>
@@ -1422,10 +1434,7 @@ body {
     renderHistory();
   }
 
-  // ── Save to history after successful upload ──
-  // Patch share panel display to also save history
-  const _origUploadAndShare = uploadAndShare;
-
+  /* ── INIT ── */
   window.addEventListener('hashchange', route);
   route();
 </script>
